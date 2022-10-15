@@ -15,6 +15,7 @@ class ConnectFour
   # rubocop:disable Style/StringConcatenation
   def render
     system("clear")
+    puts "  1 2 3 4 5 6 7"
     puts "\u256D#{"\u2500" * 15}\u256E"
     @board.each do |row|
       puts row.reduce("\u2502 ") { |str, column_el| str + (column_el || "\u26AA") } + "\u2502"
