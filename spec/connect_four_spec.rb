@@ -2,7 +2,9 @@ require_relative "../lib/connect_four"
 
 # rubocop:disable Metrics
 describe ConnectFour do
-  subject(:game) { described_class.new }
+  let(:player_one) { double('player') }
+  let(:player_two) { double('player') }
+  subject(:game) { described_class.new(player_one, player_two) }
 
   describe "#game_over?" do
     context "when the sequences are valid" do
