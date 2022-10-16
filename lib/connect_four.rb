@@ -9,6 +9,20 @@ class ConnectFour
     @board = Array.new(6) { Array.new(7) }
     @player_one = player_one
     @player_two = player_two
+    welcome_message
+    sleep(6)
+  end
+
+  def start
+    [@player_one, @player_two].each do |player|
+      render
+
+      start_player_turn(player)
+      if game_over?(player)
+        congrats_message(player)
+        break
+      end
+    end until game_over?(@player_one) || game_over?(@player_two)
   end
 
   def start_player_turn(player)
@@ -63,6 +77,6 @@ class ConnectFour
   end
 
   def congrats_message(player)
-    puts "Congratulations player #{player.player_number}, you've won!"
+    puts "Congratulations Player #{player.player_number}, you've won!"
   end
 end
