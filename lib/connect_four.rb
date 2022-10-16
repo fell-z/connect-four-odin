@@ -1,11 +1,14 @@
 require "json"
+require_relative "./player"
 
 # Connect four game implementation
 class ConnectFour
   VALID_SEQUENCES = JSON.load_file("lib/valid_combinations.json")
 
-  def initialize
+  def initialize(player_one = Player.new(1), player_two = Player.new(2))
     @board = Array.new(6) { Array.new(7) }
+    @player_one = player_one
+    @player_one = player_two
   end
 
   def lowest_possible_positions
