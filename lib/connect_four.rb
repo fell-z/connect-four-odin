@@ -9,11 +9,10 @@ class ConnectFour
     @board = Array.new(6) { Array.new(7) }
     @player_one = player_one
     @player_two = player_two
-    welcome_message
-    sleep(6)
   end
 
   def start
+    welcome_message
     [@player_one, @player_two].each do |player|
       render
 
@@ -74,6 +73,7 @@ class ConnectFour
 
       Good luck!
     WELCOME
+    sleep(6)
   end
 
   def congrats_message(player)
