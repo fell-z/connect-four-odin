@@ -23,4 +23,10 @@ class ConnectFour
     puts "\u2570#{"\u2500" * 15}\u256F"
   end
   # rubocop:enable Style/StringConcatenation
+
+  private
+
+  def update_board(player, position)
+    @board[position[0]][position[1]] = player.sym
+  end
 end
