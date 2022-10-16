@@ -38,7 +38,7 @@ class ConnectFour
   end
 
   def game_over?(player)
-    VALID_SEQUENCES.one? do |valid_sequence|
+    VALID_SEQUENCES.any? do |valid_sequence|
       valid_sequence.intersection(player.plays.sort) == valid_sequence
     end
   end
