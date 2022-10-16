@@ -4,6 +4,24 @@ require_relative "../lib/connect_four"
 describe ConnectFour do
   subject(:game) { described_class.new }
 
+  describe "#game_over?" do
+    context "when the sequences are valid" do
+      it "returns true for a horizontal sequence" do
+        player = double('player', plays: [[5, 1], [5, 2], [5, 3], [5, 4]])
+        result = game.game_over?(player)
+        expect(result).to be_truthy
+      end
+    end
+
+    context "when the sequences are invalid" do
+      it "returns false for a horizontal sequence" do
+        player = double('player', plays: [[5, 1], [5, 2], [5, 3], [5, 5]])
+        result = game.game_over?(player)
+        expect(result).to be_falsey
+      end
+    end
+  end
+
   describe "#lowest_possible_positions" do
     context "when the board is empty of player pieces" do
       it "returns an array with locations in all columns and at the first row" do
