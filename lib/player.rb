@@ -12,7 +12,7 @@ class Player
     loop do
       print "Player #{@player_number}, select a column to place your piece.\n>> "
       desired_column = gets.chomp.to_i - 1
-      if desired_column.between?(1, 7) && possible_positions[desired_column]
+      if desired_column.between?(0, 6) && possible_positions[desired_column]
         @plays << possible_positions[desired_column]
         break possible_positions[desired_column]
       else
