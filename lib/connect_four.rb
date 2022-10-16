@@ -47,4 +47,22 @@ class ConnectFour
   def update_board(player, position)
     @board[position[0]][position[1]] = player.sym
   end
+
+  def welcome_message
+    puts <<~WELCOME
+      Welcome to a game of Connect Four!
+
+      The objective of this game is simple, just make a sequence of four pieces in a row,
+      that row can be a horizontal, vertical or a diagonal sequence, traditional rules!
+
+      Player one will be identified as the red pieces.
+      Player two will be identified as the blue pieces.
+
+      Good luck!
+    WELCOME
+  end
+
+  def congrats_message(player)
+    puts "Congratulations player #{player.player_number}, you've won!"
+  end
 end
