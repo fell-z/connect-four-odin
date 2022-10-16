@@ -1,5 +1,9 @@
+require "json"
+
 # Connect four game implementation
 class ConnectFour
+  VALID_SEQUENCES = JSON.load_file("lib/valid_combinations.json")
+
   def initialize
     @board = Array.new(6) { Array.new(7) }
   end
@@ -9,6 +13,12 @@ class ConnectFour
       7.times do |column_index|
         possible_positions[column_index] = [row_index, column_index] if row[column_index].nil?
       end
+    end
+  end
+
+  def game_over?(player)
+    VALID_SEQUENCES.one? do |valid_sequence|
+      valid_sequence.intersection(player.plays.sort) == valid_sequence
     end
   end
 
