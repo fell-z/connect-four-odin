@@ -7,15 +7,39 @@ describe ConnectFour do
   describe "#game_over?" do
     context "when the sequences are valid" do
       it "returns true for a horizontal sequence" do
-        player = double('player', plays: [[5, 1], [5, 2], [5, 3], [5, 4]])
+        player = double('player', plays: [[2, 1], [2, 2], [2, 3], [2, 4]])
+        result = game.game_over?(player)
+        expect(result).to be_truthy
+      end
+
+      it "returns true for a vertical sequence" do
+        player = double('player', plays: [[1, 2], [2, 2], [3, 2], [4, 2]])
+        result = game.game_over?(player)
+        expect(result).to be_truthy
+      end
+
+      it "returns true for a diagonal sequence" do
+        player = double('player', plays: [[5, 0], [4, 1], [3, 2], [2, 3]])
         result = game.game_over?(player)
         expect(result).to be_truthy
       end
     end
 
-    context "when the sequences are invalid" do
+    context "when the sequences are invalid, e.g. one piece missing" do
       it "returns false for a horizontal sequence" do
         player = double('player', plays: [[5, 1], [5, 2], [5, 3], [5, 5]])
+        result = game.game_over?(player)
+        expect(result).to be_falsey
+      end
+
+      it "returns false for a vertical sequence" do
+        player = double('player', plays: [[4, 3], [3, 3], [2, 3], [1, 4]])
+        result = game.game_over?(player)
+        expect(result).to be_falsey
+      end
+
+      it "returns false for a diagonal sequence" do
+        player = double('player', plays: [[0, 0], [1, 1], [2, 2], [3, 2]])
         result = game.game_over?(player)
         expect(result).to be_falsey
       end
