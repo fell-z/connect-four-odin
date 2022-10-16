@@ -6,6 +6,20 @@ describe ConnectFour do
   let(:player_two) { double('player') }
   subject(:game) { described_class.new(player_one, player_two) }
 
+  before do
+    allow(game).to receive(:puts)
+    allow(game).to receive(:print)
+    allow(game).to receive(:sleep)
+  end
+
+  describe "#start_player_turn" do
+    it "calls the player's #make_a_play method" do
+      allow(game).to receive(:update_board)
+      expect(player_one).to receive(:make_a_play).with(game.lowest_possible_positions).once
+      game.start_player_turn(player_one)
+    end
+  end
+
   describe "#game_over?" do
     context "when the sequences are valid" do
       it "returns true for a horizontal sequence" do
