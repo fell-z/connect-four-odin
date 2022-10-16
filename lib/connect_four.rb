@@ -8,7 +8,12 @@ class ConnectFour
   def initialize(player_one = Player.new(1), player_two = Player.new(2))
     @board = Array.new(6) { Array.new(7) }
     @player_one = player_one
-    @player_one = player_two
+    @player_two = player_two
+  end
+
+  def start_player_turn(player)
+    position = player.make_a_play(lowest_possible_positions)
+    update_board(player, position)
   end
 
   def lowest_possible_positions
