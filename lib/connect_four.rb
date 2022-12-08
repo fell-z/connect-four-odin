@@ -47,11 +47,11 @@ class ConnectFour
   def render
     system("clear")
     puts "  1 2 3 4 5 6 7"
-    puts "\u256D#{"\u2500" * 15}\u256E"
+    puts "╭#{'─' * 15}╮"
     @board.each do |row|
-      puts row.reduce("\u2502 ") { |str, column_el| str + (column_el || "\u26AA") } + "\u2502"
+      puts row.reduce("│ ") { |str, column_el| str + (column_el || "⚪") } + "│"
     end
-    puts "\u2570#{"\u2500" * 15}\u256F"
+    puts "╰#{'─' * 15}╯"
   end
   # rubocop:enable Style/StringConcatenation
 
